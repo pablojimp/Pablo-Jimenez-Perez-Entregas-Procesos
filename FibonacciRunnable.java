@@ -1,13 +1,19 @@
 class Fibonacci implements Runnable {
-    int numero; // dato del hilo
+    int numero; // cantidad de términos a calcular
 
-    Fibonacci(int n) {         
-        numero = n;      
+    Fibonacci(int n) {
+        numero = n;
     }
 
     public void run() {
-        for (int i = 1; i <= 10; i++) {
-            System.out.println(numero + " x " + numero + " = " + (numero * numero));
+        int a = 0; // término anterior
+        int b = 1; // término actual
+
+        for (int i = 1; i <= numero; i++) {
+            System.out.println("Termino " + i + ": " + a);
+            int siguiente = a + b;
+            a = b;
+            b = siguiente;
         }
     }
 }
@@ -18,7 +24,4 @@ public class FibonacciRunnable {
         Thread hilo = new Thread(tarea);
         hilo.start();
     }
-
-    
-
 }
